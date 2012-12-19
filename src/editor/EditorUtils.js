@@ -50,6 +50,8 @@ define(function (require, exports, module) {
     require("thirdparty/CodeMirror2/mode/markdown/markdown");
     require("thirdparty/CodeMirror2/mode/yaml/yaml");
 
+    var Languages = require("language/Languages");
+
     /**
      * @private
      * Given a file URL, determines the mode to use based
@@ -68,6 +70,11 @@ define(function (require, exports, module) {
         
         // Make checks below case-INsensitive
         ext = ext.toLowerCase();
+
+        var language = Languages.getLanguageForFileExtension(ext);
+        if (language) {
+            return language.mode.CodeMirror;
+        }
 
         switch (ext) {
 
