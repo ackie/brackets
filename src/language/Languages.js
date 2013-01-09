@@ -213,13 +213,6 @@ define(function (require, exports, module) {
         .setMode("htmlmixed")
         .setBlockComment("<!--", "-->");
     
-    require("thirdparty/CodeMirror2/mode/less/less");
-    defineLanguage("less", "LESS", "text/x-less")
-        .addFileExtension("less")
-        .setMode("less")
-        .setBlockComment("/*", "*/")
-        .setLineComment("//");
-    
     require("thirdparty/CodeMirror2/mode/javascript/javascript");
     defineLanguage("javascript", "JavaScript", "application/javascript")
         .addFileExtension("js")
