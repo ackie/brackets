@@ -1085,7 +1085,7 @@ define(function (require, exports, module) {
     };
     
     Editor.prototype.getLanguageForSelection = function () {
-        return this.getLanguageForDocument().getLanguageForMode(this.getModeForSelection());
+        return this.document.getLanguage().getLanguageForMode(this.getModeForSelection());
     };
     
     /**
@@ -1106,14 +1106,6 @@ define(function (require, exports, module) {
         this._codeMirror.setOption("mode", mode);
     };
     
-    /**
-     * Returns the document's language 
-     * @return {Language} An object with information about the language
-     */
-    Editor.prototype.getLanguageForDocument = function () {
-        return this.document.getLanguage();
-    };
-
     /**
      * The Document we're bound to
      * @type {!Document}
