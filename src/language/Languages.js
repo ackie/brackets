@@ -303,7 +303,6 @@ define(function (require, exports, module) {
     
     
     exports = module.exports = {
-        defaultLanguage:             defaultLanguage,
         defineLanguage:              defineLanguage,
         getLanguage:                 getLanguage,
         getLanguageForFileExtension: getLanguageForFileExtension,
