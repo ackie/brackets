@@ -29,11 +29,19 @@ define(function (require, exports, module) {
     "use strict";
     
     
+    // Dependencies
+    var _defaultLanguagesJSON = require("text!language/languages.json");
+    
+    
+    // State
     var _fallbackLanguage  = null,
         _languages         = {},
         _fileExtensionsMap = {},
         _modeMap           = {};
-
+    
+    
+    // Helper functions
+    
     /**
      * Checks whether value is an array. Optionally checks its contents, too.
      * Throws an exception in case of a validation error.
@@ -422,13 +430,11 @@ define(function (require, exports, module) {
     // Prevent modes from being overwritten by extensions
     _patchCodeMirror();
     
-    // The fallback language
-    _fallbackLanguage = defineLanguage("unknown", { "name": "Text" });
+    // Load the default languages
+    $.each(JSON.parse(_defaultLanguagesJSON), defineLanguage);
     
-    // Load the default languages from languages.json
-    $.getJSON("language/languages.json", function (defaultLanguages) {
-        $.each(defaultLanguages, defineLanguage);
-    });
+    // The fallback language
+    _fallbackLanguage = getLanguage("unknown");
     
     
     // Public methods
